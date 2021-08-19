@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Swinject
 import MBProgressHUD
 
 extension UIViewController {
@@ -32,6 +33,18 @@ extension UIViewController {
         DispatchQueue.main.async {
             MBProgressHUD.hide(for: self.view, animated: true)
         }
+    }
+    
+}
+
+extension UIViewController {
+    
+    var appDelegate: AppDelegate {
+        UIApplication.shared.delegate as! AppDelegate
+    }
+    
+    var container: Container {
+        appDelegate.container
     }
     
 }

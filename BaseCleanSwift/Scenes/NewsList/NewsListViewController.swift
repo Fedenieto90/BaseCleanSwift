@@ -41,7 +41,7 @@ class NewsListViewController: UIViewController {
         let interactor = NewsListInteractor()
         let presenter = NewsListPresenter()
         let router = NewsListRouter()
-        let worker = NewsListWorker()
+        let worker = NewsListWorker(container: container)
         
         viewController.interactor = interactor
         viewController.router = router
