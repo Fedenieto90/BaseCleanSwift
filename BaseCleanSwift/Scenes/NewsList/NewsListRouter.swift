@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewsListRoutingLogic {
     
-    func routeToSomewhere()
+    func routeToArticleDetail()
 }
 
 protocol NewsListDataPassing {
@@ -28,7 +28,7 @@ class NewsListRouter: NewsListDataPassing {
 // MARK: - RoutingLogic
 extension NewsListRouter: NewsListRoutingLogic {
     
-    func routeToSomewhere() {
+    func routeToArticleDetail() {
         
         let destinationVC = NewsDetailViewController()
         if let sourceDS = dataStore, let destinationDS = destinationVC.router?.dataStore {
@@ -43,8 +43,9 @@ extension NewsListRouter: NewsListRoutingLogic {
 extension NewsListRouter {
     
     /// Provide the destination dataStore with data from the source dataStore.
-    func passData(from source: NewsListDataStore, to destination: NewsListDataStore) {
-
-        destination.article = source.article
+    func passData(from source: NewsListDataStore, to destination: NewsDetailDataStore) {
+        let selectedRow = (viewController?.view as? NewsListView)?.tableView.indexPathForSelectedRow?.row
+        let selectedArticle = source.articles[selectedRow!]
+        destination.article = selectedArticle
     }
 }

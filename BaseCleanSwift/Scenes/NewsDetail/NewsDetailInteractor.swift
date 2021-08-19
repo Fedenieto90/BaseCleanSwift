@@ -13,7 +13,7 @@ protocol NewsDetailBusinessLogic {
     func showArticleDetail()
 }
 
-protocol NewsDetailDataStore: NewsListDataStore {
+protocol NewsDetailDataStore: AnyObject {
     
 //    var name: String { get set }
     var article: NewsList.Something.ArticleViewModel? { get set }

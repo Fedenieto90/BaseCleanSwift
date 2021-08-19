@@ -123,9 +123,8 @@ extension NewsListViewController: NewsListViewDelegate {
 
 //    func handleButtonPress() { }
     
-    func handleArticleSelected(article: NewsList.Something.ArticleViewModel) {
-        router?.dataStore?.article = article
-        router?.routeToSomewhere()
+    func handleArticleSelected() {
+        router?.routeToArticleDetail()
     }
     
     func handleRefreshArticles() {

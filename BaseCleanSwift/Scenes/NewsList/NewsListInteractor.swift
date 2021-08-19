@@ -16,7 +16,7 @@ protocol NewsListBusinessLogic {
 protocol NewsListDataStore: AnyObject {
     
 //    var name: String { get set }
-    var article: NewsList.Something.ArticleViewModel? { get set }
+    var articles: [NewsList.Something.ArticleViewModel] { get set }
 }
 
 // MARK: - DataStore
@@ -26,7 +26,7 @@ class NewsListInteractor: NewsListDataStore {
     var worker: NewsListWorkerLogic?
     
 //    var name: String = ""
-    var article: NewsList.Something.ArticleViewModel?
+    var articles: [NewsList.Something.ArticleViewModel] = []
 }
 
 // MARK: - BusinessLogic
@@ -50,6 +50,7 @@ extension NewsListInteractor: NewsListBusinessLogic {
                 let articles = articles.map { article in
                     NewsList.Something.ArticleViewModel(article)
                 }
+                self.articles = articles
                 self.presenter?.displayArticles(response: articles)
             case .failure:
                 self.presenter?.displayAlert(message: "Error")

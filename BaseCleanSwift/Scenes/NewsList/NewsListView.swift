@@ -10,7 +10,7 @@ import UIKit
 protocol NewsListViewDelegate: AnyObject {
 
 //    func handleButtonPress()
-    func handleArticleSelected(article: NewsList.Something.ArticleViewModel)
+    func handleArticleSelected()
     func handleRefreshArticles()
 }
 
@@ -24,7 +24,7 @@ class NewsListView: UIView {
     
     // MARK: Views
     
-    private let tableView = UITableView()
+    let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
     private var articles = [NewsList.Something.ArticleViewModel]()
     
@@ -131,8 +131,7 @@ extension NewsListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = articles[indexPath.row]
-        viewDelegate?.handleArticleSelected(article: article)
+        viewDelegate?.handleArticleSelected()
     }
     
 }
