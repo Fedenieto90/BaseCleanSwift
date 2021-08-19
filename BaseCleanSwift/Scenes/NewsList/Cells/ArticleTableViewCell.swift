@@ -99,7 +99,7 @@ class ArticleTableViewCell: UITableViewCell {
         title.text = article?.title
         desc.text = article?.description
         if let url = URL(string: article?.urlToImage ?? "") {
-            self.image.af.setImage(withURL: url, placeholderImage: UIImage(), imageTransition: .crossDissolve(0.3))
+            self.image.af.setImage(withURL: url, placeholderImage: UIImage(named: "placeholder"), imageTransition: .crossDissolve(0.3))
         }
     }
 
