@@ -16,6 +16,8 @@ protocol NewsListPresentationLogic: BasePresentationLogic {
 
 // MARK: - PresentationLogic
 class NewsListPresenter: NewsListPresentationLogic {
+
+    weak var viewController: NewsListDisplayLogic?
     
     func showProgress() {
         viewController?.showProgressHUD()
@@ -24,9 +26,6 @@ class NewsListPresenter: NewsListPresentationLogic {
     func removeProgress() {
         viewController?.removeProgressHUD()
     }
-    
-
-    weak var viewController: NewsListDisplayLogic?
 
     func presentSomething(response: NewsList.Something.Response) {
         

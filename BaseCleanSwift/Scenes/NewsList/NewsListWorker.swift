@@ -16,6 +16,12 @@ protocol NewsListWorkerLogic {
 
 // MARK: - WorkerLogic
 class NewsListWorker: NewsListWorkerLogic {
+    
+    private let container: Container
+    
+    init(container: Container) {
+        self.container = container
+    }
 
     func doSomeWork(completion: (() -> Void)?) {
         
@@ -23,12 +29,6 @@ class NewsListWorker: NewsListWorkerLogic {
     }
     
     func fetchArticles(completion: @escaping GetArticlesCompletionHandler) {
-        
-        let container = Container()
-        container.register(ArticleRepository.self) { _ in
-            NewsAPI()
-        }
-        
         let newsAPI = container.resolve(ArticleRepository.self)!
         newsAPI.getArticles(completion: completion)
     }
