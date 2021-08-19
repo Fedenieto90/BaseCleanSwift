@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 typealias GetArticlesCompletionHandler = (_ articles: Result<[Article], Error>) -> Void
 
@@ -17,21 +16,16 @@ protocol ArticleRepository {
 
 class NewsAPI: ArticleRepository {
     
-    var baseUrl = "https://newsapi.org/v2"
-    var apiKey = "09e526b26846490991d2bea65155d945"
-    
-    func getArticles(completion: @escaping GetArticlesCompletionHandler) {
-        
-        let topHeadlinesPath = "/top-headlines?country=us&apiKey="
-        let topHeadlinesUrl = URL(string: baseUrl+topHeadlinesPath+apiKey)!
-        
-        AF.request(topHeadlinesUrl).validate().responseDecodable(of: ArticlesResponse.self) { response in
-            switch response.result {
-            case .success(let articlesResponse):
-                completion(.success(articlesResponse.articles))
-            case let .failure(error):
-                completion(.failure(error))
-            }
+    fileprivate struct Constants {
+        struct keys {
+            static let apiKey = "09e526b26846490991d2bea65155d945"
+        }
+        struct url {
+            static let baseUrl = "https://newsapi.org/v2"
         }
     }
+    
+    var baseUrl = Constants.url.baseUrl
+    var apiKey = Constants.keys.apiKey
+    
 }
