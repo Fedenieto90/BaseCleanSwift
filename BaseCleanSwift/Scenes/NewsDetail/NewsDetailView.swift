@@ -17,7 +17,7 @@ class NewsDetailView: UIView {
     private struct ViewTraits {
     
         static let margin: CGFloat = 20
-        static let imageHeight: CGFloat = 200
+        static let imageHeight: CGFloat = 300
     }
     
     // MARK: Views
