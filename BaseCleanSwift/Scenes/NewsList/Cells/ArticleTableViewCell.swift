@@ -102,6 +102,8 @@ class ArticleTableViewCell: UITableViewCell {
         desc.text = articleViewModel?.description
         if let url = URL(string: articleViewModel?.urlToImage ?? "") {
             self.image.af.setImage(withURL: url, placeholderImage: UIImage(named: "placeholder"), imageTransition: .crossDissolve(0.3))
+        } else {
+            self.image.image = UIImage(named: "placeholder")
         }
     }
 
