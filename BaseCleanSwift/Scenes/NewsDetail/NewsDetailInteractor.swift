@@ -16,7 +16,7 @@ protocol NewsDetailBusinessLogic {
 protocol NewsDetailDataStore: AnyObject {
     
 //    var name: String { get set }
-    var article: NewsList.Something.ArticleViewModel? { get set }
+    var article: Article? { get set }
 }
 
 // MARK: - DataStore
@@ -26,7 +26,7 @@ class NewsDetailInteractor: NewsDetailDataStore {
     var worker: NewsDetailWorkerLogic?
     
 //    var name: String = ""
-    var article: NewsList.Something.ArticleViewModel?
+    var article: Article?
 }
 
 // MARK: - BusinessLogic
@@ -42,9 +42,8 @@ extension NewsDetailInteractor: NewsDetailBusinessLogic {
     }
     
     func showArticleDetail() {
-        guard let article = article else {
-            return
+        if let article = article {
+            self.presenter?.showArticleDetail(article: article)
         }
-        self.presenter?.showArticleDetail(article: article)
     }
 }

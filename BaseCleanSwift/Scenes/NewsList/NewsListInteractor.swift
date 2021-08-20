@@ -11,12 +11,12 @@ protocol NewsListBusinessLogic {
     
     func doSomething(request: NewsList.Something.Request)
     func fetchArticles(request: NewsList.Something.Request)
+    func handleArticleSelected()
 }
 
 protocol NewsListDataStore: AnyObject {
     
-//    var name: String { get set }
-    var articles: [NewsList.Something.ArticleViewModel] { get set }
+    var articles: [Article] { get set }
 }
 
 // MARK: - DataStore
@@ -25,8 +25,7 @@ class NewsListInteractor: NewsListDataStore {
     var presenter: NewsListPresentationLogic?
     var worker: NewsListWorkerLogic?
     
-//    var name: String = ""
-    var articles: [NewsList.Something.ArticleViewModel] = []
+    var articles: [Article] = []
 }
 
 // MARK: - BusinessLogic
@@ -47,14 +46,15 @@ extension NewsListInteractor: NewsListBusinessLogic {
             self.presenter?.removeProgress()
             switch response {
             case .success(let articles):
-                let articles = articles.map { article in
-                    NewsList.Something.ArticleViewModel(article)
-                }
                 self.articles = articles
                 self.presenter?.displayArticles(response: articles)
             case .failure:
                 self.presenter?.displayAlert(message: "Error")
             }
         })
+    }
+    
+    func handleArticleSelected() {
+        self.presenter?.presentArticleDetail()
     }
 }

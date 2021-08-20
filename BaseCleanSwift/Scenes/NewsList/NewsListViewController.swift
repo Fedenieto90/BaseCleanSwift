@@ -11,6 +11,7 @@ protocol NewsListDisplayLogic: BaseDisplayLogic {
 
     func displaySomething(viewModel: NewsList.Something.ViewModel)
     func displayArticles(viewModel: [NewsList.Something.ArticleViewModel])
+    func displayArticleDetail()
     func displayAlert(message: String)
 }
 
@@ -111,6 +112,10 @@ extension NewsListViewController: NewsListDisplayLogic {
         showAlert()
     }
     
+    func displayArticleDetail() {
+        router?.routeToArticleDetail()
+    }
+    
 
     func displaySomething(viewModel: NewsList.Something.ViewModel) {
 
@@ -124,7 +129,7 @@ extension NewsListViewController: NewsListViewDelegate {
 //    func handleButtonPress() { }
     
     func handleArticleSelected() {
-        router?.routeToArticleDetail()
+        interactor?.handleArticleSelected()
     }
     
     func handleRefreshArticles() {

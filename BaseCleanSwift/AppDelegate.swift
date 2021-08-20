@@ -10,7 +10,7 @@ import Swinject
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    // DI
+    // DI Container
     let container = Container() { container in
         container.register(ArticleRepository.self) { _ in
             NewsAPI()

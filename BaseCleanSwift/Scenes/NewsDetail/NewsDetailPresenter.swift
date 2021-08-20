@@ -10,7 +10,7 @@ import UIKit
 protocol NewsDetailPresentationLogic {
 
     func presentSomething(response: NewsDetail.Something.Response)
-    func showArticleDetail(article: NewsList.Something.ArticleViewModel)
+    func showArticleDetail(article: Article)
 }
 
 // MARK: - PresentationLogic
@@ -24,7 +24,8 @@ class NewsDetailPresenter: NewsDetailPresentationLogic {
         viewController?.displaySomething(viewModel: viewModel)
     }
     
-    func showArticleDetail(article: NewsList.Something.ArticleViewModel) {
-        viewController?.displayArticleDetail(article: article)
+    func showArticleDetail(article: Article) {
+        let articleDetailViewModel = NewsDetail.Something.ArticleDetailViewModel(article)
+        viewController?.displayArticleDetail(viewModel: articleDetailViewModel)
     }
 }

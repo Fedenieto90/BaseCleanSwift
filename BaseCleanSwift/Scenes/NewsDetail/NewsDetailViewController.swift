@@ -10,7 +10,7 @@ import UIKit
 protocol NewsDetailDisplayLogic: AnyObject {
 
     func displaySomething(viewModel: NewsDetail.Something.ViewModel)
-    func displayArticleDetail(article: NewsList.Something.ArticleViewModel)
+    func displayArticleDetail(viewModel: NewsDetail.Something.ArticleDetailViewModel)
 }
 
 class NewsDetailViewController: UIViewController {
@@ -91,8 +91,8 @@ extension NewsDetailViewController: NewsDetailDisplayLogic {
         //sceneView.setData()
     }
     
-    func displayArticleDetail(article: NewsList.Something.ArticleViewModel) {
-        sceneView.setData(article: article)
+    func displayArticleDetail(viewModel: NewsDetail.Something.ArticleDetailViewModel) {
+        sceneView.setData(articleViewModel: viewModel)
     }
 }
 

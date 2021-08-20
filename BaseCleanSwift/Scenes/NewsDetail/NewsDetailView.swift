@@ -47,6 +47,14 @@ class NewsDetailView: UIView {
         return desc
     }()
     
+    let author: UILabel = {
+        let author = UILabel()
+        author.translatesAutoresizingMaskIntoConstraints = false
+        author.textColor = .secondaryLabel
+        author.numberOfLines = 0
+        return author
+    }()
+    
     
     // MARK: Parameters
 
@@ -67,12 +75,13 @@ class NewsDetailView: UIView {
     
     // MARK: Display
     
-    func setData(article: NewsList.Something.ArticleViewModel) {
-        title.text = article.title
-        desc.text = article.description
-        if let url = URL(string: article.urlToImage ?? "") {
+    func setData(articleViewModel: NewsDetail.Something.ArticleDetailViewModel) {
+        title.text = articleViewModel.title
+        desc.text = articleViewModel.description
+        if let url = URL(string: articleViewModel.urlToImage ?? "") {
             self.image.af.setImage(withURL: url, imageTransition: .crossDissolve(0.3))
         }
+        author.text = articleViewModel.author
     }
 }
 
@@ -103,6 +112,7 @@ private extension NewsDetailView {
         addSubview(title)
         addSubview(desc)
         addSubview(image)
+        addSubview(author)
     }
 
     // MARK: View Constraints
@@ -121,7 +131,11 @@ private extension NewsDetailView {
             image.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ViewTraits.margin),
             image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ViewTraits.margin),
             image.heightAnchor.constraint(equalToConstant: ViewTraits.imageHeight),
-            image.bottomAnchor.constraint(lessThanOrEqualTo:bottomAnchor)
+            image.bottomAnchor.constraint(lessThanOrEqualTo:bottomAnchor),
+            
+            author.topAnchor.constraint(equalTo: image.bottomAnchor, constant: ViewTraits.margin),
+            author.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ViewTraits.margin),
+            author.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ViewTraits.margin),
         ])
     }
 }

@@ -10,7 +10,8 @@ import UIKit
 protocol NewsListPresentationLogic: BasePresentationLogic {
 
     func presentSomething(response: NewsList.Something.Response)
-    func displayArticles(response: [NewsList.Something.ArticleViewModel])
+    func displayArticles(response: [Article])
+    func presentArticleDetail()
     func displayAlert(message: String)
 }
 
@@ -33,11 +34,18 @@ class NewsListPresenter: NewsListPresentationLogic {
         viewController?.displaySomething(viewModel: viewModel)
     }
     
-    func displayArticles(response: [NewsList.Something.ArticleViewModel]) {
-        viewController?.displayArticles(viewModel: response)
+    func displayArticles(response: [Article]) {
+        let articlesViewModel = response.map { article in
+            NewsList.Something.ArticleViewModel(article)
+        }
+        viewController?.displayArticles(viewModel: articlesViewModel)
     }
     
     func displayAlert(message: String) {
         viewController?.displayAlert(message: message)
+    }
+    
+    func presentArticleDetail() {
+        viewController?.displayArticleDetail()
     }
 }

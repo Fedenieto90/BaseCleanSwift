@@ -125,6 +125,7 @@ extension NewsListView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as? ArticleTableViewCell else {
             return UITableViewCell()
         }
+        
         let article = articles[indexPath.row]
         cell.article = article
         return cell
