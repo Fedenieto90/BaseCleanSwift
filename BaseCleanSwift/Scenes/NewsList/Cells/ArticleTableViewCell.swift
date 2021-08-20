@@ -43,16 +43,19 @@ class ArticleTableViewCell: UITableViewCell {
         return desc
     }()
     
-    var article: NewsList.Something.ArticleViewModel? {
+    var articleViewModel: NewsList.ShowArticles.ArticleViewModel? {
         didSet {
-            setup()
+            setupArticleInformation()
         }
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setup() {
@@ -63,7 +66,6 @@ class ArticleTableViewCell: UITableViewCell {
     
     func setupViews() {
         setupView()
-        setupArticleInformation()
     }
     
     func setupView() {
@@ -96,9 +98,9 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     func setupArticleInformation() {
-        title.text = article?.title
-        desc.text = article?.description
-        if let url = URL(string: article?.urlToImage ?? "") {
+        title.text = articleViewModel?.title
+        desc.text = articleViewModel?.description
+        if let url = URL(string: articleViewModel?.urlToImage ?? "") {
             self.image.af.setImage(withURL: url, placeholderImage: UIImage(named: "placeholder"), imageTransition: .crossDissolve(0.3))
         }
     }

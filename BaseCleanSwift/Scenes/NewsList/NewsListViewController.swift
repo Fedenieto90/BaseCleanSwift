@@ -9,8 +9,7 @@ import UIKit
 
 protocol NewsListDisplayLogic: BaseDisplayLogic {
 
-    func displaySomething(viewModel: NewsList.Something.ViewModel)
-    func displayArticles(viewModel: [NewsList.Something.ArticleViewModel])
+    func displayArticles(viewModel: [NewsList.ShowArticles.ArticleViewModel])
     func displayArticleDetail()
     func displayAlert(message: String)
 }
@@ -65,7 +64,6 @@ class NewsListViewController: UIViewController {
         super.viewDidLoad()
         sceneView.viewDelegate = self
         
-        doSomething()
         fetchArticles()
         setTitle()
     }
@@ -77,16 +75,9 @@ extension NewsListViewController {
     func setTitle() {
         title = "News List"
     }
-
-    func doSomething() {
-        
-        let request = NewsList.Something.Request()
-        interactor?.doSomething(request: request)
-        
-    }
     
     func fetchArticles() {
-        let request = NewsList.Something.Request()
+        let request = NewsList.ShowArticles.Request()
         interactor?.fetchArticles(request: request)
     }
 }
@@ -104,7 +95,7 @@ extension NewsListViewController: NewsListDisplayLogic {
     }
     
     
-    func displayArticles(viewModel: [NewsList.Something.ArticleViewModel]) {
+    func displayArticles(viewModel: [NewsList.ShowArticles.ArticleViewModel]) {
         sceneView.setData(articles: viewModel)
     }
     
@@ -114,12 +105,6 @@ extension NewsListViewController: NewsListDisplayLogic {
     
     func displayArticleDetail() {
         router?.routeToArticleDetail()
-    }
-    
-
-    func displaySomething(viewModel: NewsList.Something.ViewModel) {
-
-//        sceneView.setData()
     }
 }
 
@@ -133,7 +118,7 @@ extension NewsListViewController: NewsListViewDelegate {
     }
     
     func handleRefreshArticles() {
-        let request = NewsList.Something.Request()
+        let request = NewsList.ShowArticles.Request()
         interactor?.fetchArticles(request: request)
     }
 }

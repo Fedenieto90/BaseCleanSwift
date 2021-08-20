@@ -9,15 +9,13 @@ import UIKit
 
 enum NewsList {
 
-    enum Something {
+    enum ShowArticles {
 
         struct Request {
         }
 
         struct Response {
-        }
-        
-        struct ViewModel {
+            let articles: [Article]
         }
 
         struct ArticleViewModel {

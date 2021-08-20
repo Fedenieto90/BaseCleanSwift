@@ -26,7 +26,7 @@ class NewsListView: UIView {
     
     let tableView = UITableView()
     private let refreshControl = UIRefreshControl()
-    private var articles = [NewsList.Something.ArticleViewModel]()
+    private var articles = [NewsList.ShowArticles.ArticleViewModel]()
     
     // MARK: Parameters
 
@@ -47,7 +47,7 @@ class NewsListView: UIView {
     
     // MARK: Display
     
-    func setData(articles: [NewsList.Something.ArticleViewModel]) {
+    func setData(articles: [NewsList.ShowArticles.ArticleViewModel]) {
         self.articles = articles
         DispatchQueue.main.async {
             if self.refreshControl.isRefreshing {
@@ -126,8 +126,8 @@ extension NewsListView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let article = articles[indexPath.row]
-        cell.article = article
+        let articleViewModel = articles[indexPath.row]
+        cell.articleViewModel = articleViewModel
         return cell
     }
     

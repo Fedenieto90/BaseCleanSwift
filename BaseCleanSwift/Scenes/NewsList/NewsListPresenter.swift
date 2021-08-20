@@ -9,8 +9,7 @@ import UIKit
 
 protocol NewsListPresentationLogic: BasePresentationLogic {
 
-    func presentSomething(response: NewsList.Something.Response)
-    func displayArticles(response: [Article])
+    func displayArticles(response: NewsList.ShowArticles.Response)
     func presentArticleDetail()
     func displayAlert(message: String)
 }
@@ -27,18 +26,12 @@ class NewsListPresenter: NewsListPresentationLogic {
     func removeProgress() {
         viewController?.removeProgressHUD()
     }
-
-    func presentSomething(response: NewsList.Something.Response) {
-        
-        let viewModel = NewsList.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
-    }
     
-    func displayArticles(response: [Article]) {
-        let articlesViewModel = response.map { article in
-            NewsList.Something.ArticleViewModel(article)
+    func displayArticles(response: NewsList.ShowArticles.Response) {
+        let viewModel = response.articles.map { article in
+            NewsList.ShowArticles.ArticleViewModel(article)
         }
-        viewController?.displayArticles(viewModel: articlesViewModel)
+        viewController?.displayArticles(viewModel: viewModel)
     }
     
     func displayAlert(message: String) {
