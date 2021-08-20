@@ -13,6 +13,14 @@ enum NewsList {
 
         struct Request {
         }
+        
+        struct FetchArticlesRequest {
+            var isRefreshing = false
+            
+            init(isRefreshing: Bool = false) {
+                self.isRefreshing = isRefreshing
+            }
+        }
 
         struct Response {
             let articles: [Article]

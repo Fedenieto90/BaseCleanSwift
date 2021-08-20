@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewsListBusinessLogic {
     
-    func fetchArticles(request: NewsList.ShowArticles.Request)
+    func fetchArticles(request: NewsList.ShowArticles.FetchArticlesRequest)
     func handleArticleSelected()
 }
 
@@ -30,10 +30,14 @@ class NewsListInteractor: NewsListDataStore {
 // MARK: - BusinessLogic
 extension NewsListInteractor: NewsListBusinessLogic {
     
-    func fetchArticles(request: NewsList.ShowArticles.Request) {
-        self.presenter?.showProgress()
+    func fetchArticles(request: NewsList.ShowArticles.FetchArticlesRequest) {
+        if !request.isRefreshing {
+            self.presenter?.showProgress()
+        }
         worker?.fetchArticles(completion: { response in
-            self.presenter?.removeProgress()
+            if !request.isRefreshing {
+                self.presenter?.removeProgress()
+            }
             switch response {
             case .success(let articles):
                 self.articles = articles

@@ -77,7 +77,7 @@ extension NewsListViewController {
     }
     
     func fetchArticles() {
-        let request = NewsList.ShowArticles.Request()
+        let request = NewsList.ShowArticles.FetchArticlesRequest()
         interactor?.fetchArticles(request: request)
     }
 }
@@ -118,7 +118,7 @@ extension NewsListViewController: NewsListViewDelegate {
     }
     
     func handleRefreshArticles() {
-        let request = NewsList.ShowArticles.Request()
+        let request = NewsList.ShowArticles.FetchArticlesRequest(isRefreshing: true)
         interactor?.fetchArticles(request: request)
     }
 }

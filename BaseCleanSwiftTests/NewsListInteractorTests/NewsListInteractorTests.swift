@@ -46,7 +46,7 @@ class NewsListInteractorTests: XCTestCase {
         let newsListInteractorSpy = NewsListInteractorOutputSpy()
         newsListInteractor.presenter = newsListInteractorSpy
         newsListInteractor.worker = NewsListWorker(container: container)
-        let request = NewsList.ShowArticles.Request()
+        let request = NewsList.ShowArticles.FetchArticlesRequest()
          
         // When
         newsListInteractor.fetchArticles(request: request)
@@ -72,7 +72,7 @@ class NewsListInteractorTests: XCTestCase {
         let newsListInteractorSpy = NewsListInteractorOutputSpy()
         newsListInteractor.presenter = newsListInteractorSpy
         newsListInteractor.worker = NewsListWorker(container: container)
-        let request = NewsList.ShowArticles.Request()
+        let request = NewsList.ShowArticles.FetchArticlesRequest()
          
         // When
         newsListInteractor.fetchArticles(request: request)
