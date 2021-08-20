@@ -10,6 +10,8 @@
 		8B20B7DA26CFDF2C0014BE05 /* NewsListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B7D926CFDF2C0014BE05 /* NewsListInteractorTests.swift */; };
 		8B20B7DE26CFEBC80014BE05 /* NewsMockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B7DD26CFEBC80014BE05 /* NewsMockAPI.swift */; };
 		8B20B7E026CFEBF50014BE05 /* NewsListInteractorOutputSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B7DF26CFEBF50014BE05 /* NewsListInteractorOutputSpy.swift */; };
+		8B20B7E326CFEEDC0014BE05 /* NewsDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B7E226CFEEDC0014BE05 /* NewsDetailInteractorTests.swift */; };
+		8B20B7E526CFEF5C0014BE05 /* NewsDetailInteractorOutputSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B20B7E426CFEF5C0014BE05 /* NewsDetailInteractorOutputSpy.swift */; };
 		8B46DFEC26CD5A5B00864214 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46DFEB26CD5A5B00864214 /* AppDelegate.swift */; };
 		8B46DFEE26CD5A5B00864214 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B46DFED26CD5A5B00864214 /* SceneDelegate.swift */; };
 		8B46DFF526CD5A5D00864214 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B46DFF426CD5A5D00864214 /* Assets.xcassets */; };
@@ -76,6 +78,8 @@
 		8B20B7D926CFDF2C0014BE05 /* NewsListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListInteractorTests.swift; sourceTree = "<group>"; };
 		8B20B7DD26CFEBC80014BE05 /* NewsMockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsMockAPI.swift; sourceTree = "<group>"; };
 		8B20B7DF26CFEBF50014BE05 /* NewsListInteractorOutputSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListInteractorOutputSpy.swift; sourceTree = "<group>"; };
+		8B20B7E226CFEEDC0014BE05 /* NewsDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailInteractorTests.swift; sourceTree = "<group>"; };
+		8B20B7E426CFEF5C0014BE05 /* NewsDetailInteractorOutputSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailInteractorOutputSpy.swift; sourceTree = "<group>"; };
 		8B46DFE826CD5A5B00864214 /* BaseCleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseCleanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B46DFEB26CD5A5B00864214 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B46DFED26CD5A5B00864214 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +161,15 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		8B20B7E126CFEEBB0014BE05 /* NewsListDetailInteractorTests */ = {
+			isa = PBXGroup;
+			children = (
+				8B20B7E226CFEEDC0014BE05 /* NewsDetailInteractorTests.swift */,
+				8B20B7E426CFEF5C0014BE05 /* NewsDetailInteractorOutputSpy.swift */,
+			);
+			path = NewsListDetailInteractorTests;
+			sourceTree = "<group>";
+		};
 		8B46DFDF26CD5A5B00864214 = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +209,7 @@
 		8B46E00126CD5A5D00864214 /* BaseCleanSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				8B20B7E126CFEEBB0014BE05 /* NewsListDetailInteractorTests */,
 				8B20B7DB26CFEA9B0014BE05 /* NewsListInteractorTests */,
 				8B46E00226CD5A5D00864214 /* BaseCleanSwiftTests.swift */,
 				8B46E00426CD5A5D00864214 /* Info.plist */,
@@ -471,7 +485,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B20B7E326CFEEDC0014BE05 /* NewsDetailInteractorTests.swift in Sources */,
 				8B20B7DE26CFEBC80014BE05 /* NewsMockAPI.swift in Sources */,
+				8B20B7E526CFEF5C0014BE05 /* NewsDetailInteractorOutputSpy.swift in Sources */,
 				8B46E00326CD5A5D00864214 /* BaseCleanSwiftTests.swift in Sources */,
 				8B20B7DA26CFDF2C0014BE05 /* NewsListInteractorTests.swift in Sources */,
 				8B20B7E026CFEBF50014BE05 /* NewsListInteractorOutputSpy.swift in Sources */,

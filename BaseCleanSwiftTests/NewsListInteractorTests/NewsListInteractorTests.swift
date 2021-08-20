@@ -82,5 +82,20 @@ class NewsListInteractorTests: XCTestCase {
         XCTAssertTrue(newsListInteractorSpy.showProgressCalled, "Fetch articles should ask presenter to display progress")
         XCTAssertTrue(newsListInteractorSpy.showProgressCalled, "Fetch articles should ask presenter to remove progress")
     }
+    
+    func testHandleArticleSelectedShouldAskPresenterToPresentArticleDetail() {
+        // Interactor
+        let newsListInteractor = NewsListInteractor()
+        
+        // Given
+        let newsListInteractorSpy = NewsListInteractorOutputSpy()
+        newsListInteractor.presenter = newsListInteractorSpy
+         
+        // When
+        newsListInteractor.handleArticleSelected()
+     
+        // Then ...
+        XCTAssertTrue(newsListInteractorSpy.presentArticleDetailCalled, "Handle article selected should ask presenter to go to article detail")
+    }
 
 }
