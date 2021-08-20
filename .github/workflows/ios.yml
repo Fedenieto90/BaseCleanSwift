@@ -12,6 +12,10 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Setup XCode Version
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '12.5.1'
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set Default Scheme
