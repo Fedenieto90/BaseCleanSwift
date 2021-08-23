@@ -44,7 +44,7 @@ extension NewsListInteractor: NewsListBusinessLogic {
                 let response = NewsList.ShowArticles.Response(articles: articles)
                 self.presenter?.displayArticles(response: response)
             case .failure:
-                self.presenter?.displayAlert(message: "Error")
+                self.presenter?.displayAlert()
             }
         })
     }

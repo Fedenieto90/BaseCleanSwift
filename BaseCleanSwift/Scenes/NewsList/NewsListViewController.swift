@@ -11,7 +11,7 @@ protocol NewsListDisplayLogic: BaseDisplayLogic {
 
     func displayArticles(viewModel: [NewsList.ShowArticles.ArticleViewModel])
     func displayArticleDetail()
-    func displayAlert(message: String)
+    func displayAlert()
 }
 
 class NewsListViewController: UIViewController {
@@ -73,7 +73,7 @@ class NewsListViewController: UIViewController {
 extension NewsListViewController {
     
     func setTitle() {
-        title = "News List"
+        title = "NewsList_Title".localized
     }
     
     func fetchArticles() {
@@ -99,7 +99,7 @@ extension NewsListViewController: NewsListDisplayLogic {
         sceneView.setData(articles: viewModel)
     }
     
-    func displayAlert(message: String) {
+    func displayAlert() {
         showAlert()
     }
     

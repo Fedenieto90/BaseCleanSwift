@@ -1,0 +1,13 @@
+/* 
+  InfoPlist.strings
+  BaseCleanSwift
+
+  Created by Federico Nieto on 23/08/2021.
+  
+*/
+
+//NSBluetoothPeripheralUsageDescription = "This app uses your phone Bluetooth connection to connect with the bike.";
+//NSCameraUsageDescription = "This app uses your camera to record you during user research studies.";
+//NSMicrophoneUsageDescription = "This app uses the microphone to record you during user research studies.";
+//NSLocationWhenInUseUsageDescription = "This app uses your location to help you get to your bike.";
+//NSLocationUsageDescription = "This app uses your location to help you get to your bike.";

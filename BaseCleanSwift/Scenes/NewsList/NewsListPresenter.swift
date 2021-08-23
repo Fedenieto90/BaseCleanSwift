@@ -11,7 +11,7 @@ protocol NewsListPresentationLogic: BasePresentationLogic {
 
     func displayArticles(response: NewsList.ShowArticles.Response)
     func presentArticleDetail()
-    func displayAlert(message: String)
+    func displayAlert()
 }
 
 // MARK: - PresentationLogic
@@ -34,8 +34,8 @@ class NewsListPresenter: NewsListPresentationLogic {
         viewController?.displayArticles(viewModel: viewModel)
     }
     
-    func displayAlert(message: String) {
-        viewController?.displayAlert(message: message)
+    func displayAlert() {
+        viewController?.displayAlert()
     }
     
     func presentArticleDetail() {

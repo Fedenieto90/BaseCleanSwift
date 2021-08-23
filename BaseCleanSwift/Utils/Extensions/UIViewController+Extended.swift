@@ -11,9 +11,9 @@ import MBProgressHUD
 
 extension UIViewController {
     
-    func showAlert(title:String? = "Error",
-                   message: String? = "Something went wrong",
-                   buttonTitle: String? = "Ok") {
+    func showAlert(title:String? = "Alert_Error_Default_Title".localized,
+                   message: String? = "Alert_Error_Default_Message".localized,
+                   buttonTitle: String? = "Alert_Error_Ok_Action_Default_Title".localized) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: buttonTitle, style: .default, handler: nil)

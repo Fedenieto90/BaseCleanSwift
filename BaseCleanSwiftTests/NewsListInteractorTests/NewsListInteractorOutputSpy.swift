@@ -23,7 +23,7 @@ class NewsListInteractorOutputSpy: NewsListPresentationLogic {
         presentArticleDetailCalled = true
     }
     
-    func displayAlert(message: String) {
+    func displayAlert() {
         displayAlertCalled = true
     }
     

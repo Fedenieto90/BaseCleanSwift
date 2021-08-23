@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  BaseCleanSwift
+
+  Created by Federico Nieto on 23/08/2021.
+  
+*/
+
+// NewsList
+NewsList_Title = "News";
+
+// Alert Error
+Alert_Error_Default_Title = "Error";
+Alert_Error_Default_Message = "Something went wrong";
+Alert_Error_Ok_Action_Default_Title = "Ok";"
