@@ -8,11 +8,16 @@
 import Foundation
 import Alamofire
 
+enum NewsAPILanguageCountry: String {
+    case us = "us"
+    case ar = "ar"
+}
+
 extension NewsAPI {
     
     fileprivate struct Constants {
         struct path {
-            static let topHeadlines = "/top-headlines?country=us&apiKey="
+            static let topHeadlines = "/top-headlines?country=\(Locale.current.getLanguageCode())&apiKey="
         }
     }
     
