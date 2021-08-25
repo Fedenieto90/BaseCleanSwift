@@ -1,31 +1,28 @@
 //
-//  NewsListModels.swift
+//  NewsListSearchModels.swift
 //  BaseCleanSwift
 //
-//  Created by Federico Nieto on 18/08/2021.
+//  Created by Federico Nieto on 23/08/2021.
 //
 
 import UIKit
 
-enum NewsList {
+enum NewsListSearch {
 
-    enum ShowArticles {
+    enum Search {
 
-        struct Request {
-        }
-        
-        struct FetchArticlesRequest {
-            var isRefreshing = false
+        struct SearchArticlesRequest {
+            var query = ""
             
-            init(isRefreshing: Bool = false) {
-                self.isRefreshing = isRefreshing
+            init(query: String) {
+                self.query = query
             }
         }
 
         struct Response {
             let articles: [Article]
         }
-
+        
         struct ArticleViewModel {
             private let article: Article
             
@@ -59,6 +56,5 @@ enum NewsList {
                 return articles[indexPath.row]
             }
         }
-
     }
 }

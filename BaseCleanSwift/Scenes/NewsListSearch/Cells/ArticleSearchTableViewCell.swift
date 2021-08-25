@@ -1,16 +1,18 @@
 //
-//  ArticleTableViewCell.swift
+//  ArticleSearchTableViewCell.swift
 //  BaseCleanSwift
 //
-//  Created by Federico Nieto on 19/08/2021.
+//  Created by Federico Nieto on 23/08/2021.
 //
+
+import Foundation
 
 import UIKit
 import AlamofireImage
 
-class ArticleTableViewCell: UITableViewCell {
+class ArticleSearchTableViewCell: UITableViewCell {
     
-    static let identifier = "ArticleTableViewCell"
+    static let identifier = "ArticleSearchTableViewCell"
     
     private struct ViewTraits {
     
@@ -43,7 +45,7 @@ class ArticleTableViewCell: UITableViewCell {
         return desc
     }()
     
-    var articleViewModel: NewsList.ShowArticles.ArticleViewModel? {
+    var articleViewModel: NewsListSearch.Search.ArticleViewModel? {
         didSet {
             setupArticleInformation()
         }
@@ -58,7 +60,7 @@ class ArticleTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(viewModel:  NewsList.ShowArticles.ArticleViewModel?) {
+    func configure(viewModel: NewsListSearch.Search.ArticleViewModel?) {
         articleViewModel = viewModel
     }
     

@@ -1,20 +1,18 @@
 //
-//  NewsListView.swift
+//  NewsListSearchView.swift
 //  BaseCleanSwift
 //
-//  Created by Federico Nieto on 18/08/2021.
+//  Created by Federico Nieto on 23/08/2021.
 //
 
 import UIKit
 
-protocol NewsListViewDelegate: AnyObject {
-
+protocol NewsListSearchViewDelegate: AnyObject {
+    func handleSearchBarInputText(query: String)
     func handleArticleSelected()
-    func handleRefreshArticles()
-    func setSearchBar(searchController: UISearchController?)
 }
 
-class NewsListView: UIView {
+class NewsListSearchView: UIView {
     
     private struct ViewTraits {
     
@@ -25,13 +23,12 @@ class NewsListView: UIView {
     // MARK: Views
     
     let tableView = UITableView()
-    private var searchController: UISearchController?
-    private let refreshControl = UIRefreshControl()
-    private var articlesListViewModel: NewsList.ShowArticles.ArticlesListViewModel?
+    var articlesListViewModel: NewsListSearch.Search.ArticlesListViewModel?
+    
     
     // MARK: Parameters
 
-    public weak var viewDelegate: NewsListViewDelegate?
+    public weak var viewDelegate: NewsListSearchViewDelegate?
     
     // MARK: Init
     override init(frame: CGRect) {
@@ -46,26 +43,18 @@ class NewsListView: UIView {
         setup()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setupSearchBar()
-    }
-    
     // MARK: Display
     
-    func setData(viewModel: NewsList.ShowArticles.ArticlesListViewModel) {
-        self.articlesListViewModel = viewModel
+    func setData(articles: NewsListSearch.Search.ArticlesListViewModel) {
+        self.articlesListViewModel = articles
         DispatchQueue.main.async {
-            if self.refreshControl.isRefreshing {
-                self.refreshControl.endRefreshing()
-            }
             self.tableView.reloadData()
         }
     }
 }
 
 // MARK: - Setup
-private extension NewsListView {
+private extension NewsListSearchView {
 
     func setup() {
         
@@ -82,37 +71,23 @@ private extension NewsListView {
     }
 
     func setupView() {
-        backgroundColor = .white
+//        backgroundColor = .white
     }
     
     func setupTableView() {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .systemBackground
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: ArticleTableViewCell.identifier)
+        tableView.register(ArticleSearchTableViewCell.self, forCellReuseIdentifier: ArticleSearchTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.refreshControl = refreshControl
         tableView.estimatedRowHeight = ViewTraits.estimatedRowHeight
         tableView.rowHeight = UITableView.automaticDimension
-        refreshControl.addTarget(self, action: #selector(refreshArticles), for: .valueChanged)
-    }
-    
-    func setupSearchBar() {
-        let searchResultsController = NewsListSearchViewController()
-        searchController = UISearchController(searchResultsController: searchResultsController)
-        searchController?.searchBar.searchBarStyle = .prominent
-        searchController?.searchBar.placeholder = "NewsList_Search_Bar_Placeholder".localized
-        searchController?.searchBar.sizeToFit()
-        if let searchBarDelegate = searchResultsController.view as? UISearchBarDelegate {
-            searchController?.searchBar.delegate = searchBarDelegate
-            searchController?.delegate = searchResultsController
-        }
-        viewDelegate?.setSearchBar(searchController: searchController)
     }
 
     // MARK: View Hierarchy
     func setupViewHierarchy() {
+        
         addSubview(tableView)
     }
 
@@ -129,7 +104,7 @@ private extension NewsListView {
 }
 
 // MARK: - TableView
-extension NewsListView: UITableViewDelegate, UITableViewDataSource {
+extension NewsListSearchView: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -140,7 +115,7 @@ extension NewsListView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.identifier, for: indexPath) as? ArticleTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ArticleSearchTableViewCell.identifier, for: indexPath) as? ArticleSearchTableViewCell else {
             return UITableViewCell()
         }
         
@@ -155,21 +130,12 @@ extension NewsListView: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// MARK: - Refresh Control
-extension NewsListView {
+// MARK: - UISearchResultsUpdating
+extension NewsListSearchView: UISearchBarDelegate {
     
-    @objc func refreshArticles() {
-        viewDelegate?.handleRefreshArticles()
-    }
-    
-}
-
-// MARK: - SearchBar
-extension NewsListView: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        if let query = searchController.searchBar.text {
-            //viewDelegate?.handleSearchBarInputText(query: query)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let query = searchBar.text {
+            viewDelegate?.handleSearchBarInputText(query: query)
         }
     }
     

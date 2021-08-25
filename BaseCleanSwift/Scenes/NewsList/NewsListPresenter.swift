@@ -28,10 +28,10 @@ class NewsListPresenter: NewsListPresentationLogic {
     }
     
     func displayArticles(response: NewsList.ShowArticles.Response) {
-        let viewModel = response.articles.map { article in
-            NewsList.ShowArticles.ArticleViewModel(article)
+        let viewModel = response.articles.map { viewModel in
+            NewsList.ShowArticles.ArticleViewModel(viewModel)
         }
-        viewController?.displayArticles(viewModel: viewModel)
+        viewController?.displayArticles(viewModel: NewsList.ShowArticles.ArticlesListViewModel(viewModel))
     }
     
     func displayAlert() {

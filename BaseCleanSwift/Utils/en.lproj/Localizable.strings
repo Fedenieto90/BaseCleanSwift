@@ -8,6 +8,7 @@
 
 // NewsList
 NewsList_Title = "News";
+NewsList_Search_Bar_Placeholder = "Search News";
 
 // Alert Error
 Alert_Error_Default_Title = "Error";

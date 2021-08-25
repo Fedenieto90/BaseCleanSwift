@@ -12,6 +12,7 @@ typealias GetArticlesCompletionHandler = (_ articles: Result<[Article], Error>) 
 
 protocol ArticleRepository {
     func getArticles(completion: @escaping GetArticlesCompletionHandler)
+    func searchArticles(query: String, completion: @escaping GetArticlesCompletionHandler)
 }
 
 class NewsAPI: ArticleRepository {

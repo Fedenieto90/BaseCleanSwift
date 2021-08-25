@@ -9,7 +9,7 @@ import UIKit
 
 protocol NewsListDisplayLogic: BaseDisplayLogic {
 
-    func displayArticles(viewModel: [NewsList.ShowArticles.ArticleViewModel])
+    func displayArticles(viewModel: NewsList.ShowArticles.ArticlesListViewModel)
     func displayArticleDetail()
     func displayAlert()
 }
@@ -95,8 +95,8 @@ extension NewsListViewController: NewsListDisplayLogic {
     }
     
     
-    func displayArticles(viewModel: [NewsList.ShowArticles.ArticleViewModel]) {
-        sceneView.setData(articles: viewModel)
+    func displayArticles(viewModel: NewsList.ShowArticles.ArticlesListViewModel) {
+        sceneView.setData(viewModel: viewModel)
     }
     
     func displayAlert() {
@@ -110,8 +110,9 @@ extension NewsListViewController: NewsListDisplayLogic {
 
 // MARK: - ViewDelegate
 extension NewsListViewController: NewsListViewDelegate {
-
-//    func handleButtonPress() { }
+    func setSearchBar(searchController: UISearchController?) {
+        navigationItem.searchController = searchController
+    }
     
     func handleArticleSelected() {
         interactor?.handleArticleSelected()
