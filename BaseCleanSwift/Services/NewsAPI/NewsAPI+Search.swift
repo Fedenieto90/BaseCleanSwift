@@ -18,7 +18,7 @@ extension NewsAPI {
     
     func searchArticles(query: String, completion: @escaping GetArticlesCompletionHandler) {
         
-        let searchPath = String(format: Constants.path.searchFormat, query)
+        let searchPath = String(format: Constants.path.searchFormat, query).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let searchUrl = URL(string: baseUrl+searchPath+apiKey)!
         
         AF.request(searchUrl).validate().responseDecodable(of: ArticlesResponse.self) { response in

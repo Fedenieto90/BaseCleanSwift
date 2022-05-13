@@ -121,7 +121,7 @@ private extension NewsDetailView {
     func setupViewConstraints() {
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: ViewTraits.margin),
+            title.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: ViewTraits.margin),
             title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: ViewTraits.margin),
             title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -ViewTraits.margin),
             
